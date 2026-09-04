@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西船橋・船橋ホテルガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#ffffff;
+    --surface-2:#f3f6f8;
+    --ink:#28323c;
+    --ink-soft:#5d6b78;
+    --ink-faint:#8d98a4;
+    --line:#e2e7eb;
+    --heading:#3d5c74;
+    --heading-soft:#5b7f99;
+    --accent:#2b74b3;
+    --accent-tint:#e9f2f9;
+    --accent-strong:#1f5c94;
+    --slate-tint:#eef1f4;
+    --focus:#2b74b3;
+    --shadow: 0 1px 2px rgba(20,32,44,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12181f;
+      --surface:#171f28;
+      --surface-2:#1e2731;
+      --ink:#e6ebf0;
+      --ink-soft:#a7b3bf;
+      --ink-faint:#78838f;
+      --line:#2c3743;
+      --heading:#8fb6d6;
+      --heading-soft:#7ba3c4;
+      --accent:#5b9ed8;
+      --accent-tint:#1c2c3a;
+      --accent-strong:#7bb3e0;
+      --slate-tint:#232d38;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12181f;
+    --surface:#171f28;
+    --surface-2:#1e2731;
+    --ink:#e6ebf0;
+    --ink-soft:#a7b3bf;
+    --ink-faint:#78838f;
+    --line:#2c3743;
+    --heading:#8fb6d6;
+    --heading-soft:#7ba3c4;
+    --accent:#5b9ed8;
+    --accent-tint:#1c2c3a;
+    --accent-strong:#7bb3e0;
+    --slate-tint:#232d38;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Sans",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.7;
+  }
+  .num{ font-family:"IBM Plex Mono","Noto Sans JP",monospace; font-variant-numeric: tabular-nums; }
+  .head-font{ font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif; }
+
+  a{ color:inherit; }
+  button{ font-family:inherit; }
+
+  .wrap{ max-width:960px; margin:0 auto; padding:0 20px; }
+
+  /* ---------- Title block (kicker + rule), reused in hero & section heads ---------- */
+  .kicker{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .kicker .big{
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+    font-weight:900;
+    letter-spacing:.04em;
+    color:var(--heading);
+    text-transform:uppercase;
+  }
+  .kicker .small{
+    font-size:12.5px;
+    color:var(--heading-soft);
+    font-weight:700;
+    letter-spacing:.06em;
+  }
+  .rule{ position:relative; height:1px; background:var(--line); margin-top:16px; }
+  .rule::before{
+    content:""; position:absolute; left:0; top:-1.5px;
+    width:56px; height:3px; background:var(--accent);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ background:var(--surface); padding:48px 0 30px; border-bottom:1px solid var(--line); }
+  .hero .kicker .big{ font-size:clamp(26px, 4.8vw, 42px); }
+  .hero .lede{
+    margin:16px 0 26px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:58ch;
+  }
+  .stats{ display:flex; gap:0; flex-wrap:wrap; margin:26px 0 24px; }
+  .stat{
+    padding:0 24px; border-right:1px solid var(--line);
+  }
+  .stat:first-child{ padding-left:0; }
+  .stat:last-child{ border-right:0; }
+  .stat b{
+    display:block;
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    font-size:26px; font-weight:900; color:var(--heading);
+  }
+  .stat span{ color:var(--ink-faint); font-size:12px; letter-spacing:.02em; }
+
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px;
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+  }
+  .search{
+    flex:1 1 240px;
+    display:flex; align-items:center; gap:10px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 14px;
+    background:var(--bg);
+  }
+  .search svg{ flex:none; color:var(--ink-faint); }
+  .search input{
+    border:0; outline:0; background:transparent; width:100%;
+    font-size:14.5px; color:var(--ink); font-family:inherit;
+  }
+  .search input::placeholder{ color:var(--ink-faint); }
+
+  .chipset{ display:flex; gap:8px; flex-wrap:wrap; }
+  .chip{
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--ink-soft);
+    font-size:13px; font-weight:700;
+    padding:8px 15px; border-radius:999px;
+    cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--accent); border-color:var(--accent); color:#fff;
+  }
+  .chip:focus-visible, .tab:focus-visible, .maps-link:focus-visible, .tel-btn:focus-visible, .search input:focus-visible{
+    outline:2px solid var(--focus); outline-offset:2px;
+  }
+
+  /* ---------- Body ---------- */
+  main{ padding:30px 0 60px; }
+
+  .filterbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .filterbar .label{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.06em; }
+
+  .tabs{
+    display:flex; gap:6px; background:var(--surface-2);
+    padding:4px; border-radius:9px; margin-bottom:20px;
+  }
+  .tab{
+    flex:1; border:0; background:transparent; color:var(--ink-soft);
+    font-weight:700; font-size:14px; padding:10px 12px; border-radius:6px; cursor:pointer;
+  }
+  .tab[aria-selected="true"]{ background:var(--accent); color:#fff; }
+
+  .section-head{ margin:36px 0 16px; }
+  .section-head .kicker .big{ font-size:20px; }
+  .section-head .count{
+    font-size:12px; color:var(--ink-faint);
+    background:var(--surface-2); padding:4px 10px; border-radius:999px;
+    margin-left:auto;
+  }
+  .section-head .kicker{ align-items:center; }
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .card-top{ display:grid; grid-template-columns:1.15fr 1fr; gap:0; }
+  @media (max-width:640px){ .card-top{ grid-template-columns:1fr; } }
+
+  .card-main{ padding:18px 20px; border-right:1px solid var(--line); }
+  @media (max-width:640px){ .card-main{ border-right:0; border-bottom:1px solid var(--line); } }
+
+  .card-name-row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+  .tag{
+    font-size:10.5px; font-weight:700; letter-spacing:.04em;
+    padding:3px 9px; border-radius:5px;
+  }
+  .tag.love{ background:var(--accent-tint); color:var(--accent-strong); }
+  .tag.biz{ background:var(--slate-tint); color:var(--heading-soft); }
+  .tag.area{ background:var(--surface-2); color:var(--ink-faint); }
+  .card-name-row h3{
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif;
+    font-weight:700; font-size:17.5px; margin:0; color:var(--ink);
+  }
+
+  .meta-row{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; margin:7px 0;
+    font-size:13.5px; color:var(--ink-soft);
+  }
+  .meta-row .icon-text{ display:flex; align-items:center; gap:7px; }
+  .tel-btn{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--accent); color:#fff; text-decoration:none;
+    font-size:12.5px; font-weight:700; padding:6px 13px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .tel-btn:hover{ background:var(--accent-strong); }
+
+  .rate-box{
+    margin-top:12px; border:1px solid var(--line); border-radius:8px;
+    background:var(--surface-2); padding:11px 14px;
+  }
+  .rate-box .rate-head{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11.5px; font-weight:700; color:var(--ink-faint); letter-spacing:.04em;
+    margin-bottom:6px;
+  }
+  .rate-line{ display:flex; justify-content:space-between; font-size:14px; padding:3px 0; gap:12px; }
+  .rate-line .label{ color:var(--ink-soft); flex:none; }
+  .rate-line .price{ font-weight:700; text-align:right; color:var(--heading); }
+  .rate-note{ font-size:11.5px; color:var(--ink-faint); margin-top:6px; }
+
+  .card-access{
+    padding:18px 20px; background:var(--surface-2);
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .access-badge{
+    display:flex; align-items:center; gap:8px;
+    background:var(--heading); color:#fff;
+    font-size:12px; font-weight:700;
+    padding:9px 12px; border-radius:7px;
+  }
+  .access-badge .min{ margin-left:auto; font-family:"IBM Plex Mono",monospace; white-space:nowrap; }
+  .addr{ font-size:13px; color:var(--ink-soft); }
+  .maps-link{
+    margin-top:auto;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    background:transparent; color:var(--accent); border:1px solid var(--accent);
+    text-decoration:none; font-size:12.5px; font-weight:700;
+    padding:9px 12px; border-radius:7px;
+  }
+  .maps-link:hover{ background:var(--accent); color:#fff; }
+
+  .empty{ text-align:center; color:var(--ink-faint); padding:40px 0; font-size:14px; display:none; }
+
+  footer{ border-top:1px solid var(--line); padding:26px 0 50px; color:var(--ink-faint); font-size:12px; }
+  footer h4{ color:var(--ink-soft); font-size:12.5px; margin:0 0 8px; }
+  footer ul{ margin:0 0 14px; padding-left:18px; }
+  footer li{ margin-bottom:3px; }
+  footer a{ color:var(--ink-faint); }
+  .disclaimer{
+    background:var(--surface-2); border-left:3px solid var(--accent); color:var(--ink-soft);
+    border-radius:0 8px 8px 0; padding:12px 14px; font-size:12.5px; margin-bottom:18px;
+  }
+
+  @media (prefers-reduced-motion:no-preference){ .card{ transition:box-shadow .15s ease; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="big">HOTEL GUIDE</span>
+      <span class="small">西船橋・船橋エリア ホテル情報</span>
+    </div>
+    <div class="rule"></div>
+    <p class="lede">西船橋駅（北口・南口・原木）と船橋駅・京成船橋駅の周辺で実際に営業しているラブホテル／ビジネスホテルをまとめました。料金は目安です。</p>
+    <div class="stats">
+      <div class="stat"><b class="num" id="statLove">14</b><span>ラブホテル</span></div>
+      <div class="stat"><b class="num" id="statBiz">11</b><span>ビジネスホテル・カプセル</span></div>
+      <div class="stat"><b class="num" id="statAll">25</b><span>掲載施設数</span></div>
+    </div>
+    <div class="panel">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="text" placeholder="ホテル名・住所で検索…" autocomplete="off">
+      </label>
+      <div class="chipset" id="areaChips">
+        <button class="chip" data-area="all" aria-pressed="true">すべてのエリア</button>
+        <button class="chip" data-area="西船橋" aria-pressed="false">西船橋駅</button>
+        <button class="chip" data-area="船橋" aria-pressed="false">船橋駅</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="filterbar"><span class="label">カテゴリ</span></div>
+  <div class="tabs" role="tablist">
+    <button class="tab" id="tabAll" role="tab" aria-selected="true" data-cat="all">すべて表示</button>
+    <button class="tab" id="tabLove" role="tab" aria-selected="false" data-cat="love">ラブホテル系</button>
+    <button class="tab" id="tabBiz" role="tab" aria-selected="false" data-cat="biz">ビジネスホテル系</button>
+  </div>
+
+  <section id="loveSection">
+    <div class="section-head">
+      <div class="kicker">
+        <span class="big">LOVE HOTEL</span>
+        <span class="small">ラブホテル系</span>
+        <span class="count" id="loveCount">14件</span>
+      </div>
+      <div class="rule"></div>
+    </div>
+    <div id="loveList"></div>
+  </section>
+
+  <section id="bizSection">
+    <div class="section-head">
+      <div class="kicker">
+        <span class="big">BUSINESS HOTEL</span>
+        <span class="small">ビジネスホテル系</span>
+        <span class="count" id="bizCount">11件</span>
+      </div>
+      <div class="rule"></div>
+    </div>
+    <div id="bizList"></div>
+  </section>
+
+  <p class="empty" id="emptyMsg">該当する施設が見つかりませんでした。検索語や絞り込みを変えてお試しください。</p>
+</main>
+
+<footer class="wrap">
+  <div class="disclaimer">
+    掲載データは 2026年9月時点でウェブ公開情報をもとに作成した参考情報です。料金・営業状況・住所は変更される場合があります。ご来店前に必ず各施設の公式サイトまたはお電話でご確認ください。
+  </div>
+  <h4>主な参照元</h4>
+  <ul>
+    <li><a href="https://motepedia.com/nishifunabashi-lovehotel/" target="_blank" rel="noopener">モテペディア「【西船橋駅】徒歩で行けるラブホテル全10軒」</a></li>
+    <li><a href="https://couples.jp/hotels/search-by/stationgroups/1130524" target="_blank" rel="noopener">カップルズ 西船橋駅周辺ラブホテル一覧</a></li>
+    <li><a href="https://couples.jp/hotels/search-by/stationgroups/1131331" target="_blank" rel="noopener">カップルズ 船橋駅・京成船橋駅周辺ラブホテル一覧</a></li>
+    <li><a href="https://www.mapion.co.jp/phonebook/M05002/12204/ST22401/" target="_blank" rel="noopener">マピオン電話帳 西船橋駅周辺ビジネスホテル一覧</a></li>
+    <li><a href="https://www.mapion.co.jp/phonebook/M05002/12204/ST22427/" target="_blank" rel="noopener">マピオン電話帳 船橋駅周辺ビジネスホテル一覧</a></li>
+    <li><a href="https://leo-capsule.jp/" target="_blank" rel="noopener">レオ・癒カプセルホテル 西船橋店 公式サイト</a></li>
+  </ul>
+  <p>本ページは実在する店舗の営業情報を紹介する非公式のまとめページです。特定の施設・企業を運営するものではありません。</p>
+</footer>
+
+<script>
+(function(){
+  const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  const mapsUrl = addr => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(addr);
+  const UNPRICED = "公式サイト等でご確認ください";
+
+  const love = [
+    {area:"西船橋", name:"新日本プラザホテル", addr:"千葉県船橋市西船4-29-1", tel:"047-432-0712", exit:"西船橋駅 北口", min:1, rest:"3,100〜7,000円", stay:"5,500〜9,900円"},
+    {area:"西船橋", name:"アランド西船橋", addr:"千葉県船橋市西船4-30-10", tel:"047-436-5230", exit:"西船橋駅 北口", min:1, rest:"4,800〜10,240円", stay:"6,490〜22,550円"},
+    {area:"西船橋", name:"ホテル ケースリット", addr:"千葉県船橋市西船4-30-14", tel:"047-435-0100", exit:"西船橋駅 北口", min:1, rest:"2,900〜4,600円", stay:"5,800〜7,900円"},
+    {area:"西船橋", name:"HOTEL ALLURE 西船橋店", addr:"千葉県船橋市西船5-21-7", tel:"047-336-4141", exit:"西船橋駅 北口", min:4, rest:"2,880〜6,500円", stay:"6,800〜14,000円"},
+    {area:"西船橋", name:"ホテル オペラ燿", addr:"千葉県市川市原木3-17-14", tel:"047-328-8866", exit:"西船橋駅 南口", min:10, rest:"3,630〜10,230円", stay:"6,380〜15,180円"},
+    {area:"西船橋", name:"HOTEL SEKITEI 西船橋店", addr:"千葉県市川市二俣2-6-23", tel:"047-327-9011", exit:"西船橋駅 南口", min:10, rest:"3,900〜13,900円", stay:"5,900〜23,000円"},
+    {area:"西船橋", name:"10SEZON", addr:"千葉県船橋市海神町南1-1608", tel:"047-433-4000", exit:"西船橋駅 南口／船橋駅からも利用可", min:15, rest:"2,980〜4,900円", stay:"6,800〜16,000円"},
+    {area:"西船橋", name:"MG-CityHOTEL", addr:"千葉県船橋市海神町東1-1032-2", tel:"047-401-1281", exit:"西船橋駅 南口", min:15, rest:"3,500〜9,800円", stay:"5,800〜15,000円"},
+    {area:"西船橋", name:"OPERA-RESORT", addr:"千葉県船橋市海神町東1-1005-3", tel:"047-434-1121", exit:"西船橋駅 南口／船橋駅からも利用可", min:15, rest:"3,270〜8,770円", stay:"5,280〜13,530円"},
+    {area:"船橋", name:"ホテル ルーナ3", addr:"千葉県船橋市本町7-5-4", tel:"047-422-6001", exit:"船橋駅", min:3, rest:"5,980円〜", stay:"9,000円〜"},
+    {area:"船橋", name:"ホテル 21-トニーワン- 船橋", addr:"千葉県船橋市本町1-12-17", tel:"047-435-1805", exit:"京成船橋駅", min:2, rest:"2,900円〜", stay:"5,900円〜"},
+    {area:"船橋", name:"HOTEL WILL BAY CITY 船橋", addr:"千葉県船橋市本町4-6-24", tel:"047-424-7000", exit:"船橋駅", min:3, rest:"4,600円〜", stay:"7,600円〜"},
+    {area:"船橋", name:"ホテル セピア", addr:"千葉県船橋市本町4-5-6", tel:"047-424-5003", exit:"船橋駅 北口", min:2, rest:UNPRICED, stay:UNPRICED},
+    {area:"船橋", name:"HOTEL WHITE SQUARE", addr:"千葉県船橋市本町4-5-10", tel:"047-424-5225", exit:"船橋駅／京成船橋駅", min:3, rest:UNPRICED, stay:UNPRICED},
+  ];
+
+  const biz = [
+    {area:"西船橋", name:"アパホテル〈西船橋駅前〉", addr:"千葉県船橋市印内町605-1", tel:"0570-05-2411", exit:"西船橋駅 南口", min:2, stay:"素泊まり目安 6,300円〜", note:"全室禁煙・2021年開業"},
+    {area:"西船橋", name:"レオ・癒カプセルホテル 西船橋店", addr:"千葉県船橋市葛飾町2-412 西船橋レジデンス1F", tel:"047-404-2500", exit:"西船橋駅 南口", min:3, stay:"エコノミー 2,700円〜／VIP 4,500円〜", note:"カプセル・男女利用可"},
+    {area:"西船橋", name:"東横INN西船橋原木インター", addr:"千葉県市川市原木3-17-30", tel:"047-327-1045", exit:"西船橋駅（原木）", min:10, stay:"素泊まり目安 7,036円〜", note:"駅から無料送迎バスあり"},
+    {area:"船橋", name:"JR東日本ホテルメッツ船橋", addr:"千葉県船橋市本町1丁目", tel:"047-425-0011", exit:"船橋駅 直結", min:1, stay:"素泊まり目安 6,900円〜", note:"駅直結・全室禁煙"},
+    {area:"船橋", name:"サンホテル船橋", addr:"千葉県船橋市本町付近", tel:"047-407-3276", exit:"船橋駅", min:4, stay:UNPRICED, note:"駅近のビジネスホテル"},
+    {area:"船橋", name:"船橋シティホテル", addr:"千葉県船橋市本町付近", tel:"047-437-5511", exit:"船橋駅", min:5, stay:UNPRICED, note:"京成船橋駅からも徒歩5分"},
+    {area:"船橋", name:"ホテルシロー", addr:"千葉県船橋市本町付近", tel:"047-433-1126", exit:"船橋駅 南口", min:7, stay:UNPRICED, note:"京成船橋駅からは徒歩5分"},
+    {area:"船橋", name:"サン・グランドホテル船橋", addr:"千葉県船橋市本町付近", tel:"047-437-1221", exit:"船橋駅", min:8, stay:UNPRICED, note:""},
+    {area:"船橋", name:"ホテルトレンド船橋", addr:"千葉県船橋市本町付近", tel:"047-437-1221", exit:"船橋駅", min:8, stay:"素泊まり目安 8,700円〜(2名)", note:""},
+    {area:"船橋", name:"クインテッサホテル千葉船橋", addr:"千葉県船橋市本町付近", tel:"047-498-9566", exit:"船橋駅", min:8, stay:"素泊まり目安 6,816円〜", note:""},
+    {area:"船橋", name:"ホテル市松", addr:"千葉県船橋市内", tel:"047-431-2330", exit:"船橋駅", min:15, stay:UNPRICED, note:""},
+  ];
+
+  function rateRow(label, price){
+    const isUnpriced = price === UNPRICED;
+    const shown = isUnpriced ? esc(price) : "¥" + esc(price);
+    return `<div class="rate-line"><span class="label">${label}</span><span class="price ${isUnpriced?'':'num'}">${shown}</span></div>`;
+  }
+
+  function loveCard(h){
+    return `<article class="card" data-cat="love" data-area="${h.area}" data-search="${esc(h.name+h.addr)}">
+      <div class="card-top">
+        <div class="card-main">
+          <div class="card-name-row"><span class="tag love">LOVE HOTEL</span><span class="tag area">${h.area}エリア</span><h3>${esc(h.name)}</h3></div>
+          <div class="meta-row"><span class="icon-text">☎ <span class="num">${h.tel}</span></span>
+            <a class="tel-btn" href="tel:${h.tel}">電話する</a></div>
+          <div class="rate-box">
+            <div class="rate-head"><span>ご利用料金の目安</span></div>
+            ${rateRow("休憩", h.rest)}
+            ${rateRow("宿泊", h.stay)}
+            <div class="rate-note">曜日や部屋タイプにより異なります。最新料金は公式サイト等でご確認ください。</div>
+          </div>
+        </div>
+        <div class="card-access">
+          <div class="access-badge">◎ ${esc(h.exit)}<span class="min">徒歩約${h.min}分</span></div>
+          <div class="addr">${esc(h.addr)}</div>
+          <a class="maps-link" href="${mapsUrl(h.addr + ' ' + h.name)}" target="_blank" rel="noopener">↗ Google Mapsで経路を確認</a>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function bizCard(h){
+    return `<article class="card" data-cat="biz" data-area="${h.area}" data-search="${esc(h.name+h.addr)}">
+      <div class="card-top">
+        <div class="card-main">
+          <div class="card-name-row"><span class="tag biz">BUSINESS</span><span class="tag area">${h.area}エリア</span><h3>${esc(h.name)}</h3></div>
+          <div class="meta-row"><span class="icon-text">☎ <span class="num">${h.tel}</span></span>
+            <a class="tel-btn" href="tel:${h.tel}">電話する</a></div>
+          <div class="rate-box">
+            <div class="rate-head"><span>ご利用料金の目安</span></div>
+            ${rateRow("宿泊", h.stay)}
+            <div class="rate-note">${h.note ? esc(h.note)+"。" : ""}日程・シーズンにより変動します。</div>
+          </div>
+        </div>
+        <div class="card-access">
+          <div class="access-badge">◎ ${esc(h.exit)}<span class="min">徒歩約${h.min}分</span></div>
+          <div class="addr">${esc(h.addr)}</div>
+          <a class="maps-link" href="${mapsUrl(h.addr + ' ' + h.name)}" target="_blank" rel="noopener">↗ Google Mapsで経路を確認</a>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  document.getElementById("loveList").innerHTML = love.map(loveCard).join("");
+  document.getElementById("bizList").innerHTML = biz.map(bizCard).join("");
+
+  const state = { cat:"all", area:"all", q:"" };
+  const loveSection = document.getElementById("loveSection");
+  const bizSection = document.getElementById("bizSection");
+  const emptyMsg = document.getElementById("emptyMsg");
+  const loveCount = document.getElementById("loveCount");
+  const bizCount = document.getElementById("bizCount");
+
+  function apply(){
+    let visible = 0, loveVisible = 0, bizVisible = 0;
+    document.querySelectorAll(".card").forEach(c=>{
+      const cat = c.dataset.cat, area = c.dataset.area, hay = c.dataset.search.toLowerCase();
+      const okCat = state.cat==="all" || state.cat===cat;
+      const okArea = state.area==="all" || state.area===area;
+      const okQ = !state.q || hay.includes(state.q);
+      const show = okCat && okArea && okQ;
+      c.style.display = show ? "" : "none";
+      if(show){ visible++; if(cat==="love") loveVisible++; else bizVisible++; }
+    });
+    loveSection.style.display = (state.cat==="all"||state.cat==="love") ? "" : "none";
+    bizSection.style.display = (state.cat==="all"||state.cat==="biz") ? "" : "none";
+    loveCount.textContent = loveVisible + "件";
+    bizCount.textContent = bizVisible + "件";
+    emptyMsg.style.display = visible===0 ? "block" : "none";
+  }
+
+  document.querySelectorAll(".tab").forEach(t=>{
+    t.addEventListener("click", ()=>{
+      document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected","false"));
+      t.setAttribute("aria-selected","true");
+      state.cat = t.dataset.cat;
+      apply();
+    });
+  });
+  document.querySelectorAll("#areaChips .chip").forEach(c=>{
+    c.addEventListener("click", ()=>{
+      document.querySelectorAll("#areaChips .chip").forEach(x=>x.setAttribute("aria-pressed","false"));
+      c.setAttribute("aria-pressed","true");
+      state.area = c.dataset.area;
+      apply();
+    });
+  });
+  document.getElementById("q").addEventListener("input", e=>{
+    state.q = e.target.value.trim().toLowerCase();
+    apply();
+  });
+
+  apply();
+})();
+</script>
+
+</body>
+</html>
