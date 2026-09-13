@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>西船橋・船橋ホテルガイド</title>
+<title>西船橋・船橋・市川ホテルガイド</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -203,6 +202,12 @@
   .rate-line{ display:flex; justify-content:space-between; font-size:14px; padding:3px 0; gap:12px; }
   .rate-line .label{ color:var(--ink-soft); flex:none; }
   .rate-line .price{ font-weight:700; text-align:right; color:var(--heading); }
+  .rate-line .price small{ display:block; font-weight:500; font-size:11px; color:var(--ink-faint); line-height:1.4; }
+  .rate-group{
+    font-size:11px; font-weight:700; color:var(--heading-soft); letter-spacing:.04em;
+    margin:8px 0 2px; padding-top:6px; border-top:1px dashed var(--line);
+  }
+  .rate-group:first-of-type{ margin-top:0; padding-top:0; border-top:0; }
   .rate-note{ font-size:11.5px; color:var(--ink-faint); margin-top:6px; }
 
   .card-access{
@@ -229,10 +234,6 @@
   .empty{ text-align:center; color:var(--ink-faint); padding:40px 0; font-size:14px; display:none; }
 
   footer{ border-top:1px solid var(--line); padding:26px 0 50px; color:var(--ink-faint); font-size:12px; }
-  footer h4{ color:var(--ink-soft); font-size:12.5px; margin:0 0 8px; }
-  footer ul{ margin:0 0 14px; padding-left:18px; }
-  footer li{ margin-bottom:3px; }
-  footer a{ color:var(--ink-faint); }
   .disclaimer{
     background:var(--surface-2); border-left:3px solid var(--accent); color:var(--ink-soft);
     border-radius:0 8px 8px 0; padding:12px 14px; font-size:12.5px; margin-bottom:18px;
@@ -247,13 +248,13 @@
   <div class="wrap">
     <div class="kicker">
       <span class="big">HOTEL GUIDE</span>
-      <span class="small">西船橋・船橋エリア ホテル情報</span>
+      <span class="small">西船橋・船橋・市川エリア ホテル情報</span>
     </div>
     <div class="rule"></div>
-    <p class="lede">西船橋駅（北口・南口・原木）と船橋駅・京成船橋駅の周辺で実際に営業しているラブホテル／ビジネスホテルをまとめました。料金は目安です。</p>
+    <p class="lede">西船橋駅（北口・南口・原木）、船橋駅・京成船橋駅、市川駅・本八幡駅の周辺で実際に営業しているラブホテル／ビジネスホテルをまとめました。料金は目安です。</p>
     <div class="stats">
-      <div class="stat"><b class="num" id="statLove">14</b><span>ラブホテル</span></div>
-      <div class="stat"><b class="num" id="statBiz">11</b><span>ビジネスホテル・カプセル</span></div>
+      <div class="stat"><b class="num" id="statLove">18</b><span>ラブホテル</span></div>
+      <div class="stat"><b class="num" id="statBiz">7</b><span>ビジネスホテル・カプセル</span></div>
       <div class="stat"><b class="num" id="statAll">25</b><span>掲載施設数</span></div>
     </div>
     <div class="panel">
@@ -265,6 +266,7 @@
         <button class="chip" data-area="all" aria-pressed="true">すべてのエリア</button>
         <button class="chip" data-area="西船橋" aria-pressed="false">西船橋駅</button>
         <button class="chip" data-area="船橋" aria-pressed="false">船橋駅</button>
+        <button class="chip" data-area="市川" aria-pressed="false">市川駅・本八幡駅</button>
       </div>
     </div>
   </div>
@@ -283,7 +285,7 @@
       <div class="kicker">
         <span class="big">LOVE HOTEL</span>
         <span class="small">ラブホテル系</span>
-        <span class="count" id="loveCount">14件</span>
+        <span class="count" id="loveCount">18件</span>
       </div>
       <div class="rule"></div>
     </div>
@@ -295,7 +297,7 @@
       <div class="kicker">
         <span class="big">BUSINESS HOTEL</span>
         <span class="small">ビジネスホテル系</span>
-        <span class="count" id="bizCount">11件</span>
+        <span class="count" id="bizCount">7件</span>
       </div>
       <div class="rule"></div>
     </div>
@@ -309,15 +311,6 @@
   <div class="disclaimer">
     掲載データは 2026年9月時点でウェブ公開情報をもとに作成した参考情報です。料金・営業状況・住所は変更される場合があります。ご来店前に必ず各施設の公式サイトまたはお電話でご確認ください。
   </div>
-  <h4>主な参照元</h4>
-  <ul>
-    <li><a href="https://motepedia.com/nishifunabashi-lovehotel/" target="_blank" rel="noopener">モテペディア「【西船橋駅】徒歩で行けるラブホテル全10軒」</a></li>
-    <li><a href="https://couples.jp/hotels/search-by/stationgroups/1130524" target="_blank" rel="noopener">カップルズ 西船橋駅周辺ラブホテル一覧</a></li>
-    <li><a href="https://couples.jp/hotels/search-by/stationgroups/1131331" target="_blank" rel="noopener">カップルズ 船橋駅・京成船橋駅周辺ラブホテル一覧</a></li>
-    <li><a href="https://www.mapion.co.jp/phonebook/M05002/12204/ST22401/" target="_blank" rel="noopener">マピオン電話帳 西船橋駅周辺ビジネスホテル一覧</a></li>
-    <li><a href="https://www.mapion.co.jp/phonebook/M05002/12204/ST22427/" target="_blank" rel="noopener">マピオン電話帳 船橋駅周辺ビジネスホテル一覧</a></li>
-    <li><a href="https://leo-capsule.jp/" target="_blank" rel="noopener">レオ・癒カプセルホテル 西船橋店 公式サイト</a></li>
-  </ul>
   <p>本ページは実在する店舗の営業情報を紹介する非公式のまとめページです。特定の施設・企業を運営するものではありません。</p>
 </footer>
 
@@ -340,28 +333,55 @@
     {area:"船橋", name:"ホテル ルーナ3", addr:"千葉県船橋市本町7-5-4", tel:"047-422-6001", exit:"船橋駅", min:3, rest:"5,980円〜", stay:"9,000円〜"},
     {area:"船橋", name:"ホテル 21-トニーワン- 船橋", addr:"千葉県船橋市本町1-12-17", tel:"047-435-1805", exit:"京成船橋駅", min:2, rest:"2,900円〜", stay:"5,900円〜"},
     {area:"船橋", name:"HOTEL WILL BAY CITY 船橋", addr:"千葉県船橋市本町4-6-24", tel:"047-424-7000", exit:"船橋駅", min:3, rest:"4,600円〜", stay:"7,600円〜"},
-    {area:"船橋", name:"ホテル セピア", addr:"千葉県船橋市本町4-5-6", tel:"047-424-5003", exit:"船橋駅 北口", min:2, rest:UNPRICED, stay:UNPRICED},
-    {area:"船橋", name:"HOTEL WHITE SQUARE", addr:"千葉県船橋市本町4-5-10", tel:"047-424-5225", exit:"船橋駅／京成船橋駅", min:3, rest:UNPRICED, stay:UNPRICED},
+    {area:"船橋", name:"ホテル セピア", addr:"千葉県船橋市本町4-5-6", tel:"047-424-5003", exit:"船橋駅 北口", min:2, rest:"2,900〜6,000円", stay:"6,000〜9,000円"},
+    {area:"船橋", name:"HOTEL WHITE SQUARE", addr:"千葉県船橋市本町4-5-10", tel:"047-424-5225", exit:"船橋駅／京成船橋駅", min:3, rest:"5,000〜7,900円", stay:"8,500〜14,000円"},
+    {area:"市川", name:"HOTEL Bene（ホテル ベーネ）", addr:"千葉県市川市八幡1-17-15", tel:"047-333-7811", exit:"本八幡駅 徒歩約5分／京成八幡駅", min:5, rest:"6,380〜7,550円", stay:"10,230〜13,550円"},
+    {area:"市川", name:"HOTEL TwinFlag TOKYO BAY", addr:"千葉県市川市塩浜3-10-3", tel:"047-395-5111", exit:"市川塩浜駅", min:2, rest:UNPRICED, stay:"11,000円〜"},
+    {area:"市川", name:"ホテル ラセーヌ", addr:"千葉県市川市塩浜3-10-5", tel:"047-396-7111", exit:"市川塩浜駅", min:4, rest:"4,800円〜", stay:"6,500円〜"},
+    {area:"市川", name:"HOTEL SA市川", addr:"千葉県市川市下貝塚3-8-12", tel:"047-373-7671", exit:"市川大野駅 車で約5分／本八幡駅 車で約15分", min:null, rest:"4,200円〜", stay:"7,500円〜"},
+  ];
+
+  // ビジネスホテル共通：1名／2名 × 平日／休前日 の4行
+  const bizRates = (s1w, s1h, s2w, s2h) => [
+    {title:"1名利用（シングル／1人利用・1名1室）", rows:[
+      {label:"平日（月〜木・日）", price:s1w},
+      {label:"休前日・土曜日", price:s1h},
+    ]},
+    {title:"2名利用（ダブル・ツイン等・1室あたり）", rows:[
+      {label:"平日", price:s2w},
+      {label:"休前日・土曜日・イベント日", price:s2h},
+    ]},
   ];
 
   const biz = [
     {area:"西船橋", name:"アパホテル〈西船橋駅前〉", addr:"千葉県船橋市印内町605-1", tel:"0570-05-2411", exit:"西船橋駅 南口", min:2, stay:"素泊まり目安 6,300円〜", note:"全室禁煙・2021年開業"},
-    {area:"西船橋", name:"レオ・癒カプセルホテル 西船橋店", addr:"千葉県船橋市葛飾町2-412 西船橋レジデンス1F", tel:"047-404-2500", exit:"西船橋駅 南口", min:3, stay:"エコノミー 2,700円〜／VIP 4,500円〜", note:"カプセル・男女利用可"},
-    {area:"西船橋", name:"東横INN西船橋原木インター", addr:"千葉県市川市原木3-17-30", tel:"047-327-1045", exit:"西船橋駅（原木）", min:10, stay:"素泊まり目安 7,036円〜", note:"駅から無料送迎バスあり"},
     {area:"船橋", name:"JR東日本ホテルメッツ船橋", addr:"千葉県船橋市本町1丁目", tel:"047-425-0011", exit:"船橋駅 直結", min:1, stay:"素泊まり目安 6,900円〜", note:"駅直結・全室禁煙"},
-    {area:"船橋", name:"サンホテル船橋", addr:"千葉県船橋市本町付近", tel:"047-407-3276", exit:"船橋駅", min:4, stay:UNPRICED, note:"駅近のビジネスホテル"},
-    {area:"船橋", name:"船橋シティホテル", addr:"千葉県船橋市本町付近", tel:"047-437-5511", exit:"船橋駅", min:5, stay:UNPRICED, note:"京成船橋駅からも徒歩5分"},
-    {area:"船橋", name:"ホテルシロー", addr:"千葉県船橋市本町付近", tel:"047-433-1126", exit:"船橋駅 南口", min:7, stay:UNPRICED, note:"京成船橋駅からは徒歩5分"},
-    {area:"船橋", name:"サン・グランドホテル船橋", addr:"千葉県船橋市本町付近", tel:"047-437-1221", exit:"船橋駅", min:8, stay:UNPRICED, note:""},
-    {area:"船橋", name:"ホテルトレンド船橋", addr:"千葉県船橋市本町付近", tel:"047-437-1221", exit:"船橋駅", min:8, stay:"素泊まり目安 8,700円〜(2名)", note:""},
-    {area:"船橋", name:"クインテッサホテル千葉船橋", addr:"千葉県船橋市本町付近", tel:"047-498-9566", exit:"船橋駅", min:8, stay:"素泊まり目安 6,816円〜", note:""},
-    {area:"船橋", name:"ホテル市松", addr:"千葉県船橋市内", tel:"047-431-2330", exit:"船橋駅", min:15, stay:UNPRICED, note:""},
+    {area:"船橋", name:"ホテルシロー", addr:"千葉県船橋市本町付近", tel:"047-433-1126", exit:"船橋駅 南口", min:7, note:"京成船橋駅からは徒歩5分",
+      groups:bizRates("6,500〜8,500円前後","9,500〜13,000円前後","10,000〜14,000円前後","15,000〜20,000円前後")},
+    {area:"市川", name:"HOTEL R9 Premium 市川駅前", addr:"千葉県市川市市川1-8-6", tel:"047-374-3712", exit:"市川駅 北口", min:1, stay:"素泊まり目安 7,400円〜", note:"駅前・全室ダブルルーム"},
+    {area:"市川", name:"市川グランドホテル", addr:"千葉県市川市市川1-3-18", tel:"047-324-1231", exit:"市川駅 北口", min:3, stay:"素泊まり目安 5,300円〜", note:"BBHホテルグループ"},
+    {area:"市川", name:"スーパーホテル東西線・市川・妙典駅前", addr:"千葉県市川市妙典4-4-27 妙典センタービル", tel:"047-397-9000", exit:"妙典駅", min:1, stay:"素泊まり目安 4,050円〜", note:"妙典駅前のビジネスホテル"},
+    {area:"船橋", name:"ホテル市松", addr:"千葉県船橋市内", tel:"047-431-2330", exit:"船橋駅", min:15, note:"",
+      groups:bizRates("6,500〜8,500円前後","9,500〜13,000円前後","10,000〜14,000円前後","15,000〜20,000円前後")},
   ];
 
-  function rateRow(label, price){
+  function rateRow(label, price, sub){
     const isUnpriced = price === UNPRICED;
     const shown = isUnpriced ? esc(price) : "¥" + esc(price);
-    return `<div class="rate-line"><span class="label">${label}</span><span class="price ${isUnpriced?'':'num'}">${shown}</span></div>`;
+    const subHtml = sub ? `<small>${esc(sub)}</small>` : "";
+    return `<div class="rate-line"><span class="label">${esc(label)}</span><span class="price ${isUnpriced?'':'num'}">${shown}${subHtml}</span></div>`;
+  }
+  function rateGroups(groups){
+    return groups.map(g =>
+      `<div class="rate-group">${esc(g.title)}</div>` +
+      g.rows.map(r => rateRow(r.label, r.price, r.sub)).join("")
+    ).join("");
+  }
+  function loveRates(h){
+    return h.groups ? rateGroups(h.groups) : rateRow("休憩", h.rest) + rateRow("宿泊", h.stay);
+  }
+  function bizRatesHtml(h){
+    return h.groups ? rateGroups(h.groups) : rateRow("宿泊", h.stay);
   }
 
   function loveCard(h){
@@ -373,13 +393,12 @@
             <a class="tel-btn" href="tel:${h.tel}">電話する</a></div>
           <div class="rate-box">
             <div class="rate-head"><span>ご利用料金の目安</span></div>
-            ${rateRow("休憩", h.rest)}
-            ${rateRow("宿泊", h.stay)}
+            ${loveRates(h)}
             <div class="rate-note">曜日や部屋タイプにより異なります。最新料金は公式サイト等でご確認ください。</div>
           </div>
         </div>
         <div class="card-access">
-          <div class="access-badge">◎ ${esc(h.exit)}<span class="min">徒歩約${h.min}分</span></div>
+          <div class="access-badge">◎ ${esc(h.exit)}<span class="min">${h.min==null?"車利用":"徒歩約"+h.min+"分"}</span></div>
           <div class="addr">${esc(h.addr)}</div>
           <a class="maps-link" href="${mapsUrl(h.addr + ' ' + h.name)}" target="_blank" rel="noopener">↗ Google Mapsで経路を確認</a>
         </div>
@@ -396,12 +415,12 @@
             <a class="tel-btn" href="tel:${h.tel}">電話する</a></div>
           <div class="rate-box">
             <div class="rate-head"><span>ご利用料金の目安</span></div>
-            ${rateRow("宿泊", h.stay)}
+            ${bizRatesHtml(h)}
             <div class="rate-note">${h.note ? esc(h.note)+"。" : ""}日程・シーズンにより変動します。</div>
           </div>
         </div>
         <div class="card-access">
-          <div class="access-badge">◎ ${esc(h.exit)}<span class="min">徒歩約${h.min}分</span></div>
+          <div class="access-badge">◎ ${esc(h.exit)}<span class="min">${h.min==null?"車利用":"徒歩約"+h.min+"分"}</span></div>
           <div class="addr">${esc(h.addr)}</div>
           <a class="maps-link" href="${mapsUrl(h.addr + ' ' + h.name)}" target="_blank" rel="noopener">↗ Google Mapsで経路を確認</a>
         </div>
